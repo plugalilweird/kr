@@ -11,7 +11,7 @@ if substring == "":
     print(0)
 else:
     count = 0
-    for i in range(len(string)):
+    for i in range(len(string) - len(substring) + 1):
         match = True
 
         for j in range(len(substring)):
