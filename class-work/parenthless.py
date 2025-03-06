@@ -1,7 +1,5 @@
 
-
-
-def parenthless(string: str) -> bool:
+def parenthless(string: str):
     stack = []
     pairs = {')' : '(','}' : '{', ']' : '['}
 
@@ -15,5 +13,5 @@ def parenthless(string: str) -> bool:
 
     return not stack
 
-x = parenthless('[][][]')
+x = parenthless('[]')
 print(x)
