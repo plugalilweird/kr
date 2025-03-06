@@ -1,4 +1,3 @@
-
 def parenthless(string: str):
     stack = []
     pairs = {')' : '(','}' : '{', ']' : '['}
