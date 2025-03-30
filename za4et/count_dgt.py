@@ -8,5 +8,3 @@ def count_digit(number):
             digitCount[currentDigit] = 1
 
     return digitCount
-
-print(count_digit(5555222))

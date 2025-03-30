@@ -6,3 +6,5 @@ def abbreviation(fullPhrase):
             abbreviation += currentWord[0].upper()
 
     return abbreviation
+
+print(abbreviation("мяу гав"))

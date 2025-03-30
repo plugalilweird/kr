@@ -5,5 +5,5 @@ def fibonacci_generator(number):
         yield firstNumber
         firstNumber, secondNumber = secondNumber, firstNumber + secondNumber
 
-for currentNumber in fibonacci_generator(10):
+for currentNumber in fibonacci_generator(6):
     print(currentNumber)

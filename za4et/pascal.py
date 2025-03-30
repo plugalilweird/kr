@@ -6,4 +6,4 @@ def pascal(rowIndex):
         coefficients.append(nextCoefficient)
     return coefficients
 
-print(pascal(4))
+print(pascal(3))

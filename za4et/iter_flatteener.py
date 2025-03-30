@@ -16,6 +16,7 @@ class FlattenIterator:
                 self.stack.append(iter(currentElement))
             else:
                 return currentElement
+
         raise StopIteration
 
 nested_list = [1, [2, [3, 4], 5], 6]
