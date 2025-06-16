@@ -1,7 +1,5 @@
 #прошел
 def solution(n, m, adjL):
-
-
     edges = set()
 
     for u in adjL:

@@ -1,13 +1,7 @@
-#ПРОШЁЛ
 import heapq
 
+
 def solution(n, roads):
-    """
-    Находит город (0..n-1), сумма кратчайших расстояний
-    от которого до всех остальных минимальна.
-    Если несколько — возвращает наименьший номер.
-    """
-    # Строим списки смежности
     adj = [[] for _ in range(n)]
     for u, v, w in roads:
         adj[u].append((v, w))
@@ -17,6 +11,7 @@ def solution(n, roads):
         dist = [float('inf')] * n
         dist[start] = 0
         heap = [(0, start)]
+
         while heap:
             d_u, u = heapq.heappop(heap)
             if d_u > dist[u]:
@@ -30,11 +25,9 @@ def solution(n, roads):
 
     best_city = 0
     best_sum = float('inf')
-
     for city in range(n):
         total = sum(dijkstra(city))
         if total < best_sum:
             best_sum = total
             best_city = city
-
     return best_city

@@ -16,9 +16,7 @@ def solution(s1, s2):
             if s1[i - 1] == s2[j - 1]:
                 curr[j] = prev[j - 1] + 1
             else:
-                # берём максимум, не включая последний символ одной из строк
-                curr[j] = curr[j - 1] if curr[j - 1] > prev[j] else prev[j]
-        # переходим к следующей строке
+                curr[j] = max(prev[j], curr[j-1])
         prev, curr = curr, prev
 
     return prev[m]

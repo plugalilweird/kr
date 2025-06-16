@@ -1,38 +1,29 @@
-#гпт, прошёл
-from collections import deque
+def solution(n, depend):
+    # Строим граф и считаем входящие степени
+    graph = [[] for _ in range(n)]
+    in_degree = [0] * n
 
-
-def solution(n: int, depend: list[list[int]]) -> list[int] or int:
-    """
-    Находит порядок выполнения n процессов с учётом зависимостей.
-
-    Параметры:
-    - n: количество процессов (нумерация от 0 до n-1).
-    - depend: список списков, где depend[i] — процессы, от которых зависит i.
-
-    Возвращает любой допустимый порядок (список из n индексов) или -1, если топологическая сортировка невозможна.
-    """
-    in_deg = [0] * n
-    adj = [[] for _ in range(n)]
-
-    # Строим граф: из каждой зависимости j->i
     for i in range(n):
-        for j in depend[i]:
-            adj[j].append(i)
-            in_deg[i] += 1
+        for dep in depend[i]:
+            graph[dep].append(i)
+            in_degree[i] += 1
 
-    # Инициализируем очередь независимых процессов
-    q = deque([i for i in range(n) if in_deg[i] == 0])
-    order = []
+    # Ищем процессы без зависимостей
+    queue = [i for i in range(n) if in_degree[i] == 0]
 
-    while q:
-        u = q.popleft()
-        order.append(u)
-        for v in adj[u]:
-            in_deg[v] -= 1
-            if in_deg[v] == 0:
-                q.append(v)
+    result = []
+    while queue:
+        process = queue.pop(0)
+        result.append(process)
 
-    # Проверяем, все ли процессы учтены
-    return order if len(order) == n else -1
+        for neighbor in graph[process]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                queue.append(neighbor)
+
+    # Если не удалось обработать все процессы — значит, есть цикл
+    if len(result) < n:
+        return -1
+
+    return result
 
